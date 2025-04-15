@@ -1,0 +1,61 @@
+.chat-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #242629; /* Fondo oscuro */
+  padding: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+textarea.form-control {
+  resize: none; /* Evitar el redimensionamiento */
+  max-width: 90%; /* Ajusta el tamaño del área de texto */
+  background-color: #34393d; /* Fondo oscuro del textarea */
+  color: #ffffff; /* Texto blanco */
+  border: none;
+  border-radius: 10px; /* Bordes redondeados */
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+  padding: 8px;
+}
+textarea.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Blanco con 50% de opacidad */
+}
+
+textarea.form-control:focus {
+  border-color: none;
+  outline: none;
+  box-shadow: none;
+}
+textarea.form-control:not(:focus) {
+  caret-color: transparent;
+}
+
+button.btn-primary {
+  width: 75px;
+  height: 75px;
+  background-color: #34393d; /* Azul similar al navbar */
+  border: none;
+  border-radius: 50px;
+  border-top-left-radius: 50px !important;
+  border-bottom-left-radius: 50px !important;
+  margin-right: 50px;
+  padding: 10px 15px;
+  color: white;
+  cursor: pointer;
+}
+
+button.btn-primary:hover {
+  background-color: #303335; /* Azul más oscuro al hacer hover */
+}
+button.btn:active {
+  background-color: #61676b;
+}
