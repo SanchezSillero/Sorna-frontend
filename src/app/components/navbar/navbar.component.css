@@ -1,0 +1,12 @@
+.navbar {
+  height: 60px;
+  background-color: #242629;
+}
+
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  user-select: none;
+  cursor: default;
+}
