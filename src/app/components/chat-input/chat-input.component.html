@@ -1,0 +1,12 @@
+<div class="chat-input-container">
+  <div class="input-group">
+    <textarea
+      [(ngModel)]="promptText"
+      class="form-control"
+      placeholder="Escribe tu mensaje aquí..."
+      rows="4"
+      (keyup.enter)="sendPrompt()"
+    ></textarea>
+    <button class="btn btn-primary" (click)="sendPrompt()">Enviar</button>
+  </div>
+</div>

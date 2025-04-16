@@ -1,1 +1,41 @@
-<p>navbar works!</p>
+<nav class="navbar px-3 d-flex justify-content-between align-items-center">
+  <!-- Boton Toggle para el historial de prompts (izquierda) -->
+  <button class="btn btn-outline-light" (click)="toggleMenu.emit()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="navbar-title text-white text-center flex-grow-1">
+    <h1 class="mb-0">SORNA</h1>
+  </div>
+
+  <!-- Boton Perfil Usuario (derecha) -->
+  <div class="dropdown">
+    <button
+      class="btn btn-outline-light dropdown-toggle"
+      type="button"
+      id="userDropdown"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      <i class="bi bi-person-circle"></i>
+    </button>
+
+    <ul
+      class="dropdown-menu dropdown-menu-end dropdown-menu-dark"
+      aria-labelledby="userDropdown"
+    >
+      <li>
+        <button class="dropdown-item" (click)="openSettings.emit()">
+          Configurar perfil
+        </button>
+      </li>
+      <li>
+        <hr class="dropdown-divider" />
+      </li>
+      <li>
+        <button class="dropdown-item">Cerrar sesión</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
