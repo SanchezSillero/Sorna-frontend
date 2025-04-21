@@ -1,0 +1,22 @@
+<div class="sidebar">
+  <!-- Botón de Toggle (para abrir/cerrar el sidebar) -->
+  <button class="btn btn-outline-light" (click)="toggleSidebar()">
+    <i class="bi bi-list"></i>
+  </button>
+
+  <div class="sidebar-title text-white">
+    <h1 class="mb-0">SORNA</h1>
+  </div>
+
+  <!-- Menú del Sidebar -->
+  <ul class="sidebar-menu">
+    <li>
+      <button class="dropdown-item" (click)="openSettings.emit()">
+        Configurar perfil
+      </button>
+    </li>
+    <li>
+      <button class="dropdown-item">Cerrar sesión</button>
+    </li>
+  </ul>
+</div>

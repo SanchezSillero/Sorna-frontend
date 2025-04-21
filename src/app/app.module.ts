@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ChatInputComponent } from './components/chat-input/chat-input.component';
 import { FormsModule } from '@angular/forms';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ChatInputComponent
+    ChatInputComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
