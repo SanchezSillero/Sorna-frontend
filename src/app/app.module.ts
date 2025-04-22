@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+  withEventReplay,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,17 +16,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   declarations: [
     AppComponent,
     NavbarComponent,
+    SidebarComponent,
     ChatInputComponent,
-    SidebarComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [
-    provideClientHydration(withEventReplay())
-  ],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [provideClientHydration(withEventReplay())],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
