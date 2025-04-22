@@ -1,0 +1,63 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #242629;
+  transition: width 0.3s ease;
+  border-right: 1px solid #34393d;
+  color: white;
+  padding: 16px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.btn-new-chat {
+  background: #34393d;
+  color: white;
+  border: none;
+  margin: 10px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+/* Efecto hover (solo aplica cuando el sidebar está expandido) */
+.sidebar:not(.collapsed) .btn-new-chat:hover {
+  background: #40464b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Efecto al hacer clic */
+.sidebar:not(.collapsed) .btn-new-chat:active {
+  transform: translateY(0);
+  background: #3a4045;
+}
+
+.chat-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-item:hover {
+  background: #34393d;
+}
+
+.group-title {
+  color: #9CA3AF;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  padding-left: 8px;
+}

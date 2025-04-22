@@ -4,12 +4,14 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   standalone: false,
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent {
   title = 'Sorna-frontend';
-  
+  isSidebarCollapsed: boolean = true; // Estado inicial (colapsado)
+
   onToggleMenu() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed; // Cambia el estado
     console.log('Toggle del menú lateral');
     // Aquí puedes mostrar u ocultar el sidebar
   }
