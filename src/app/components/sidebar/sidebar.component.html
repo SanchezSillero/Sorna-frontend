@@ -1,14 +1,5 @@
 <!-- Contenedor principal (colapsable) -->
 <div class="sidebar" [class.collapsed]="isCollapsed">
-  <!-- Encabezado (opcional, para coherencia con navbar) -->
-  <div class="sidebar-header">
-    <button class="btn btn-icon" (click)="toggleCollapse()">
-      <i class="bi bi-chevron-left" *ngIf="!isCollapsed"></i>
-      <i class="bi bi-list" *ngIf="isCollapsed"></i>
-    </button>
-    <h4 *ngIf="!isCollapsed">Mis Chats</h4>
-  </div>
-
   <!-- Botón "Nuevo chat" (visible en ambos estados) -->
   <button class="btn btn-new-chat" (click)="createNewChat()">
     <i class="bi bi-plus-lg"></i>
@@ -27,8 +18,8 @@
 
   <!-- Lista de chats agrupados por fecha (solo expandido) -->
   <div class="chat-history" *ngIf="!isCollapsed">
-    <!-- Grupo "Hoy" -->
-    <div class="chat-group">
+    <!-- Hoy -->
+    <div class="chat-group" *ngIf="todaysChats.length > 0">
       <h5 class="group-title">Hoy</h5>
       <div
         class="chat-item"
@@ -40,12 +31,25 @@
       </div>
     </div>
 
-    <!-- Grupo "Ayer" -->
+    <!-- Ayer -->
     <div class="chat-group" *ngIf="yesterdaysChats.length > 0">
       <h5 class="group-title">Ayer</h5>
       <div
         class="chat-item"
         *ngFor="let chat of yesterdaysChats"
+        (click)="selectChat(chat.id)"
+      >
+        <i class="bi bi-chat-left-text"></i>
+        <span>{{ chat.title }}</span>
+      </div>
+    </div>
+
+    <!-- Anteriores -->
+    <div class="chat-group" *ngIf="olderChats.length > 0">
+      <h5 class="group-title">Anteriores</h5>
+      <div
+        class="chat-item"
+        *ngFor="let chat of olderChats"
         (click)="selectChat(chat.id)"
       >
         <i class="bi bi-chat-left-text"></i>

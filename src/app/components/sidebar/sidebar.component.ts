@@ -56,10 +56,9 @@ export class SidebarComponent {
   }
 
   get olderChats(): Chat[] {
-    const yesterday = new Date(Date.now() - 86400000).toDateString();
-    return this.chats.filter(
-      (chat) => chat.createdAt.toDateString() < yesterday
-    );
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return this.chats.filter((chat) => chat.createdAt < yesterday);
   }
 
   // --- Eventos ---
