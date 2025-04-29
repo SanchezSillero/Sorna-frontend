@@ -16,7 +16,7 @@
   background: #34393d;
   color: white;
   border: none;
-  margin: 10px;
+  margin: 1px;
   border-radius: 8px;
   padding: 8px 12px;
   display: flex;
@@ -24,6 +24,12 @@
   gap: 1px;
   cursor: pointer;
   transition: all 0.2s ease;
+  justify-content: center;
+}
+
+.sidebar.collapsed .btn-new-chat {
+  justify-content: center;
+  width: 100%;
 }
 /* Efecto hover (solo aplica cuando el sidebar está expandido) */
 .sidebar:not(.collapsed) .btn-new-chat:hover {
@@ -43,8 +49,6 @@
   cursor: pointer;
   border-radius: 4px;
   display: flex;
-  align-items: center;
-  gap: 8px;display: flex;
   align-items: center;
   gap: 8px;
 }
