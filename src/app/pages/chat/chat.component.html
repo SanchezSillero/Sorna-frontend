@@ -2,5 +2,9 @@
   (toggleMenu)="onToggleMenu()"
   (openSettings)="onOpenSettings()"
 ></app-navbar>
+<app-sidebar
+  [isCollapsed]="isSidebarCollapsed"
+  (toggleCollapseEvent)="onToggleMenu()"
+></app-sidebar>
 
-<app-chat-input></app-chat-input>
+<app-chat-input [isSidebarCollapsed]="isSidebarCollapsed"></app-chat-input>

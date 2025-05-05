@@ -9,6 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ChatComponent } from './pages/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AuthModalComponent } from './components/auth-modal/auth-modal.component
     ChatInputComponent,
     HomeComponent,
     ChatComponent,
-    AuthModalComponent
+    AuthModalComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

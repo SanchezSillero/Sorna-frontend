@@ -1,4 +1,10 @@
-<div class="chat-input-container">
+<div
+  class="chat-input-container"
+  [ngStyle]="{
+    left: isSidebarCollapsed ? '70px' : '250px',
+    width: isSidebarCollapsed ? 'calc(100% - 70px)' : 'calc(100% - 250px)'
+  }"
+>
   <div class="input-group">
     <textarea
       [(ngModel)]="promptText"

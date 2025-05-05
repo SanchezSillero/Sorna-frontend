@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-chat-input',
   standalone: false,
   templateUrl: './chat-input.component.html',
-  styleUrl: './chat-input.component.css'
+  styleUrl: './chat-input.component.css',
 })
 export class ChatInputComponent {
+  @Input() isSidebarCollapsed: boolean = false;
+
   promptText: string = '';
 
   sendPrompt() {
