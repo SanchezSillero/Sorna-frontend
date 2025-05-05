@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class ChatComponent {
   title = 'Sorna-frontend';
-  
+  isSidebarCollapsed: boolean = true; // Estado inicial (colapsado)
+
   onToggleMenu() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed; // Cambia el estado
     console.log('Toggle del menú lateral');
     // Aquí puedes mostrar u ocultar el sidebar
   }
@@ -19,5 +21,4 @@ export class ChatComponent {
     // Aquí puedes mostrar un modal o un panel de ajustes
   }
 }
-
 
