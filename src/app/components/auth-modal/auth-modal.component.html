@@ -42,10 +42,13 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar
+        <button type="button" class="btn btn-primary" (click)="onSubmit()">
+          LogIn
         </button>
-        <button type="button" class="btn btn-primary">Registrarse</button>
+
+        <button type="button" class="btn btn-primary" (click)="onRegister()">
+          Registrarse
+        </button>
       </div>
     </div>
   </div>
