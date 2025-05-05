@@ -3,5 +3,17 @@
 >
   <h1 class="display-4">Bienvenido a SORNA</h1>
   <p class="lead">Interactúa con modelos de lenguaje de forma intuitiva.</p>
-  <a routerLink="/chat" class="btn btn-primary mt-3">Ir al chat</a>
+
+  <button
+    class="btn btn-primary mt-3"
+    data-bs-toggle="modal"
+    data-bs-target="#authModal"
+  >
+    Iniciar sesión
+  </button>
+  <a routerLink="/chat" class="btn btn-primary mt-3"
+    >Continuar sin Iniciar Sesión</a
+  >
 </div>
+
+<app-auth-modal></app-auth-modal>
