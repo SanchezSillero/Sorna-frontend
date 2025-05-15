@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../../services/users.service';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth-modal',
@@ -9,16 +9,61 @@ import { UserService } from '../../services/users.service';
   styleUrl: './auth-modal.component.css'
 })
 export class AuthModalComponent {
-
-  email: string = '';
+  // Login fields
+  username: string = '';
   password: string = '';
+  loginError: string = '';
 
+  // Register fields
+  registerEmail: string = '';
+  registerUsername: string = '';
+  registerPassword: string = '';
+  registerPassword2: string = '';
+  registerError: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    console.log('Login con:', this.email, this.password);
-    // Aquí conectarás con AuthService más adelante
+    this.loginError = '';
+    this.authService.login(this.username, this.password).subscribe({
+      next: (res) => {
+        // Login exitoso: cerrar modal y redirigir
+        this.router.navigate(['/chat']);
+        this.closeModal('authModal');
+        console.log('Login exitoso', res);
+      },
+      error: (err) => {
+        this.loginError = 'Usuario o contraseña incorrectos';
+      }
+    });
   }
+
   onRegister() {
-    console.log('Usuario registrado con:', this.email, this.password);
+    if (this.registerPassword !== this.registerPassword2) {
+      this.registerError = 'Las contraseñas no coinciden';
+      return;
     }
+    this.registerError = '';
+    this.authService.register(this.registerEmail, this.registerUsername, this.registerPassword).subscribe({
+      next: (res) => {
+        // Registro exitoso: cerrar modal
+        this.closeModal('registerModal');
+        console.log('Registro exitoso', res);
+      },
+      error: (err) => {
+        this.registerError = 'Error al registrar usuario';
+      }
+    });
+  }
+
+  private closeModal(modalId: string) {
+    if (typeof window === 'undefined') return;
+    const modalElement = document.getElementById(modalId);
+    if (modalElement && (window as any).bootstrap) {
+      // Bootstrap 5: cerrar modal programáticamente
+      // @ts-ignore
+      const modalInstance = (window as any).bootstrap.Modal.getInstance(modalElement) || new (window as any).bootstrap.Modal(modalElement);
+      modalInstance.hide();
+    }
+  }
 }

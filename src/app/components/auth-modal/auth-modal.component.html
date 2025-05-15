@@ -1,4 +1,4 @@
-<!-- Modal de Inicio de sesión / Registro -->
+<!-- Modal de Inicio de sesión -->
 <div
   class="modal fade"
   id="authModal"
@@ -9,9 +9,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content bg-dark text-white">
       <div class="modal-header">
-        <h5 class="modal-title" id="authModalLabel">
-          Iniciar sesión / Registrarse
-        </h5>
+        <h5 class="modal-title" id="authModalLabel">Iniciar sesión</h5>
         <button
           type="button"
           class="btn-close"
@@ -22,12 +20,14 @@
       <div class="modal-body">
         <form>
           <div class="mb-3">
-            <label for="email" class="form-label">Correo electrónico</label>
+            <label for="username" class="form-label">Usuario</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
-              id="email"
-              placeholder="Introduce tu correo"
+              id="username"
+              [(ngModel)]="username"
+              name="username"
+              placeholder="Introduce tu usuario"
             />
           </div>
           <div class="mb-3">
@@ -36,6 +36,8 @@
               type="password"
               class="form-control"
               id="password"
+              [(ngModel)]="password"
+              name="password"
               placeholder="Introduce tu contraseña"
             />
           </div>
@@ -45,7 +47,95 @@
         <button type="button" class="btn btn-primary" (click)="onSubmit()">
           LogIn
         </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-toggle="modal"
+          data-bs-target="#registerModal"
+          data-bs-dismiss="modal"
+        >
+          Registrarse
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Modal de Registro -->
+<div
+  class="modal fade"
+  id="registerModal"
+  tabindex="-1"
+  aria-labelledby="registerModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Registro de usuario</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="registerEmail" class="form-label"
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="registerEmail"
+              [(ngModel)]="registerEmail"
+              name="registerEmail"
+              placeholder="Introduce tu correo"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="registerUsername" class="form-label">Usuario</label>
+            <input
+              type="text"
+              class="form-control"
+              id="registerUsername"
+              [(ngModel)]="registerUsername"
+              name="registerUsername"
+              placeholder="Introduce tu usuario"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              id="registerPassword"
+              [(ngModel)]="registerPassword"
+              name="registerPassword"
+              placeholder="Introduce tu contraseña"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="registerPassword2" class="form-label"
+              >Repite la contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="registerPassword2"
+              [(ngModel)]="registerPassword2"
+              name="registerPassword2"
+              placeholder="Repite tu contraseña"
+            />
+          </div>
+          <div *ngIf="registerError" class="alert alert-danger py-1">
+            {{ registerError }}
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="onRegister()">
           Registrarse
         </button>

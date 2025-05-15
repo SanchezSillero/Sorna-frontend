@@ -32,4 +32,4 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
