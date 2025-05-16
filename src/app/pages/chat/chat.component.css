@@ -1,0 +1,6 @@
+/* Puedes poner esto en chat.component.css */
+.chat-layout {
+  width: 100vw;
+  min-height: 100vh;
+  background: #181a1b;
+}

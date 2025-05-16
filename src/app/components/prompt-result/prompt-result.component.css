@@ -1,0 +1,16 @@
+.prompt-result-viewport {
+  min-height: calc(
+    100vh - 180px
+  ); /* Ajusta según el alto de tu navbar + chat-input */
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.prompt-result-card {
+  max-width: 700px;
+  width: 100%;
+  background-color: #23272b;
+  color: #fff;
+  border-radius: 16px;
+  border: none;
+}

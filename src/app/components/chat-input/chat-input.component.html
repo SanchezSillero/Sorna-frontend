@@ -5,6 +5,22 @@
     width: isSidebarCollapsed ? 'calc(100% - 70px)' : 'calc(100% - 250px)'
   }"
 >
+  <!-- Selector de cómico arriba -->
+  <div class="comedian-select-group mb-2">
+    <label for="comedian" class="comedian-label text-light">Comediante:</label>
+    <select
+      id="comedian"
+      class="form-select comedian-select bg-dark text-light"
+      [(ngModel)]="selectedComedian"
+      name="comedian"
+      required
+    >
+      <option *ngFor="let c of comedians" [value]="c.name">
+        {{ c.name_comedian }}
+      </option>
+    </select>
+  </div>
+  <!-- Input y botón abajo -->
   <div class="input-group">
     <textarea
       [(ngModel)]="promptText"

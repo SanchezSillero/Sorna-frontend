@@ -10,6 +10,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModalComponent } from './components/auth-modal/auth-modal.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PromptResultComponent } from './components/prompt-result/prompt-result.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     HomeComponent,
     ChatComponent,
     AuthModalComponent,
-    SidebarComponent
+    SidebarComponent,
+    PromptResultComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div *ngIf="result" class="prompt-result-card card shadow mb-4 mx-auto">
+  <div class="card-body">
+    <h4 class="card-title">{{ result.title }}</h4>
+    <p class="card-text">{{ result.story }}</p>
+    <div class="d-flex justify-content-between align-items-center mt-3">
+      <span class="badge bg-secondary">Comediante: {{ result.comedian }}</span>
+      <small class="text-muted"
+        >Fecha: {{ result.date_created | date : "short" }}</small
+      >
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, tap, catchError, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,20 +9,17 @@ export class AuthService {
   private apiUrl = 'http://localhost:8000';
   private isLoggedInSubject = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient) {
-    if (typeof window !== 'undefined') {
-      this.isLoggedInSubject.next(this.hasToken());
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   // Login con usuario y contraseña
-  login(username: string, password: string): Observable<any> {
+  login(username: string, password: string): Observable<HttpResponse<any>> {
     return this.http
-      .post(`${this.apiUrl}/auth/login`, { username, password })
+      .post(`${this.apiUrl}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
       .pipe(
-        tap((response: any) => {
-          localStorage.setItem('token', response.access_token);
-          this.isLoggedInSubject.next(true);
+        tap((response) => {
+          if (response.status === 204) {
+            this.isLoggedInSubject.next(true);
+          }
         })
       );
   }
@@ -33,25 +30,30 @@ export class AuthService {
       email,
       username,
       password
-    });
+    }, { withCredentials: true });
+  }
+
+  // Verifica si la sesión es válida (llama a un endpoint protegido)
+  checkSession(): void {
+    this.http.get(`${this.apiUrl}/auth/me`, { withCredentials: true }).pipe(
+      tap(() => this.isLoggedInSubject.next(true)),
+      catchError(() => {
+        this.isLoggedInSubject.next(false);
+        return of(null);
+      })
+    ).subscribe();
   }
 
   logout(): void {
-    localStorage.removeItem('token');
-    this.isLoggedInSubject.next(false);
+    // Llama al endpoint de logout si existe
+    this.http.post(`${this.apiUrl}/auth/logout`, {}, { withCredentials: true }).subscribe(() => {
+      this.isLoggedInSubject.next(false);
+    }, () => {
+      this.isLoggedInSubject.next(false);
+    });
   }
 
   isLoggedIn(): Observable<boolean> {
     return this.isLoggedInSubject.asObservable();
-  }
-
-  private hasToken(): boolean {
-    if (typeof window === 'undefined') return false;
-    return !!localStorage.getItem('token');
-  }
-
-  getToken(): string | null {
-    if (typeof window === 'undefined') return null;
-    return localStorage.getItem('token');
   }
 }

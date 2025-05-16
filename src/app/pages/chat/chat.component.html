@@ -2,9 +2,21 @@
   (toggleMenu)="onToggleMenu()"
   (openSettings)="onOpenSettings()"
 ></app-navbar>
-<app-sidebar
-  [isCollapsed]="isSidebarCollapsed"
-  (toggleCollapseEvent)="onToggleMenu()"
-></app-sidebar>
 
-<app-chat-input [isSidebarCollapsed]="isSidebarCollapsed"></app-chat-input>
+<div class="chat-layout d-flex" style="min-height: 100vh">
+  <app-sidebar
+    [isCollapsed]="isSidebarCollapsed"
+    (toggleCollapseEvent)="onToggleMenu()"
+  ></app-sidebar>
+
+  <div
+    class="flex-grow-1 d-flex flex-column align-items-center justify-content-center"
+    style="position: relative"
+  >
+    <app-prompt-result [result]="generatedStory"></app-prompt-result>
+    <app-chat-input
+      [isSidebarCollapsed]="isSidebarCollapsed"
+      (generatePrompt)="generate($event)"
+    ></app-chat-input>
+  </div>
+</div>

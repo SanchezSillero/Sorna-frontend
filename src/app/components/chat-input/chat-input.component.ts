@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { PromptService, ComedianInfo } from '../../services/prompt.service';
 
 @Component({
   selector: 'app-chat-input',
@@ -6,16 +7,35 @@ import { Component, Input } from '@angular/core';
   templateUrl: './chat-input.component.html',
   styleUrl: './chat-input.component.css',
 })
-export class ChatInputComponent {
-  @Input() isSidebarCollapsed: boolean = false;
+export class ChatInputComponent implements OnInit {
+  @Input() isSidebarCollapsed: boolean = true;
+  @Output() generatePrompt = new EventEmitter<{ prompt: string, comedian: string }>();
 
+  comedians: ComedianInfo[] = [];
+  selectedComedian: string = '';
   promptText: string = '';
 
+  constructor(private promptService: PromptService) {}
+
+  ngOnInit() {
+    this.promptService.getComedians().subscribe({
+      next: (comedians) => {
+        this.comedians = comedians;
+        if (comedians.length > 0) {
+          this.selectedComedian = comedians[0].name;
+        }
+      }
+    });
+  }
+
   sendPrompt() {
-    const trimmed = this.promptText.trim();
-    if (trimmed.length > 0) {
-      console.log('Mensaje enviado:', trimmed);
-      this.promptText = ''; // Limpiar el input
+    if (this.promptText.trim() && this.selectedComedian) {
+       console.log('Emitir prompt:', this.promptText, 'Comediante:', this.selectedComedian); // <-- Añade este log
+      this.generatePrompt.emit({
+        prompt: this.promptText,
+        comedian: this.selectedComedian
+      });
+      this.promptText = '';
     }
   }
 }
