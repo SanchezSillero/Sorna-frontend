@@ -17,7 +17,7 @@
 }
 
 textarea.form-control {
-  resize: none; /* Evitar el redimensionamiento */
+  resize: none;
   max-width: 90%;
   background-color: #34393d;
   color: #ffffff;
@@ -41,8 +41,8 @@ textarea.form-control:not(:focus) {
 }
 
 button.btn-primary {
-  width: 75px;
-  height: 75px;
+  width: 95px;
+  height: 95px;
   background-color: #34393d;
   border: none;
   border-radius: 50px;
@@ -59,4 +59,12 @@ button.btn-primary:hover {
 }
 button.btn:active {
   background-color: #61676b;
+}
+.comedian-select {
+  max-width: 225px;
+  border: 1.5px solid #4e5d6c;
+  box-shadow: none;
+  outline: none;
+  background-color: #23272b;
+  color: #fff;
 }
