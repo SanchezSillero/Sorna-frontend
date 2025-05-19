@@ -9,12 +9,12 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './auth-modal.component.css'
 })
 export class AuthModalComponent {
-  // Login fields
+  
   username: string = '';
   password: string = '';
   loginError: string = '';
 
-  // Register fields
+ 
   registerEmail: string = '';
   registerUsername: string = '';
   registerPassword: string = '';
@@ -27,7 +27,8 @@ export class AuthModalComponent {
     this.loginError = '';
     this.authService.login(this.username, this.password).subscribe({
       next: (res) => {
-        // Login exitoso: cerrar modal y redirigir
+      
+        
         this.router.navigate(['/chat']);
         this.closeModal('authModal');
         console.log('Login exitoso', res);
@@ -60,8 +61,7 @@ export class AuthModalComponent {
     if (typeof window === 'undefined') return;
     const modalElement = document.getElementById(modalId);
     if (modalElement && (window as any).bootstrap) {
-      // Bootstrap 5: cerrar modal programáticamente
-      // @ts-ignore
+    
       const modalInstance = (window as any).bootstrap.Modal.getInstance(modalElement) || new (window as any).bootstrap.Modal(modalElement);
       modalInstance.hide();
     }

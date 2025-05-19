@@ -15,26 +15,26 @@ interface Chat {
 })
 export class SidebarComponent {
   // --- Estado del sidebar ---
-  @Input() isCollapsed: boolean = false; // Recibe estado desde el padre (navbar)
-  @Output() toggleCollapseEvent = new EventEmitter<void>(); // Notifica al padre
+  @Input() isCollapsed: boolean = false; 
+  @Output() toggleCollapseEvent = new EventEmitter<void>(); 
 
-  // --- Chats de ejemplo (luego los cargarás desde una API) ---
+  // --- Chats de ejemplo  ---
   chats: Chat[] = [
     {
       id: '1',
-      title: 'Cómo funciona RAG',
+      title: 'Ejemplo de prompt 1',
       lastMessage: 'Explícame el modelo...',
       createdAt: new Date(),
     },
     {
       id: '2',
-      title: 'Diseño UI',
+      title: 'Ejemplo de prompt 2',
       lastMessage: 'Necesito ayuda con Angular...',
       createdAt: new Date(Date.now() - 86400000),
     }, // Ayer
     {
       id: '3',
-      title: 'Reunión con el equipo',
+      title: 'Ejemplo de prompt 3',
       lastMessage: 'Hoy a las 17:00...',
       createdAt: new Date(Date.now() - 172800000),
     }, // Anteayer

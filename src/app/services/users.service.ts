@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8000'; // tu backend local
-
+  private apiUrl = 'http://localhost:8000'; 
+// Gestion de perfil de usuario
   constructor(private http: HttpClient) {}
 
   getProfile(): Observable<any> {

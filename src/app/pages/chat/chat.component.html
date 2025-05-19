@@ -3,17 +3,36 @@
   (openSettings)="onOpenSettings()"
 ></app-navbar>
 
-<div class="chat-layout d-flex" style="min-height: 100vh">
+<div
+  class="chat-layout d-flex"
+  style="height: calc(100vh - 60px); overflow: hidden"
+>
   <app-sidebar
     [isCollapsed]="isSidebarCollapsed"
     (toggleCollapseEvent)="onToggleMenu()"
   ></app-sidebar>
 
   <div
-    class="flex-grow-1 d-flex flex-column align-items-center justify-content-center"
-    style="position: relative"
+    class="flex-grow-1 d-flex flex-column position-relative p-0"
+    style="min-width: 0; min-height: 0"
   >
-    <app-prompt-result [result]="generatedStory"></app-prompt-result>
+    <!-- Mensaje de carga -->
+    <div
+      *ngIf="isLoading"
+      class="w-100 d-flex flex-column align-items-center justify-content-center"
+      style="min-height: 200px"
+    >
+      <div class="spinner-border text-primary my-3" role="status"></div>
+      <div>Generando historia, por favor espera...</div>
+    </div>
+    <!-- Tarjeta de resultado -->
+    <div
+      class="flex-grow-1 d-flex align-items-start justify-content-center w-100"
+      style="min-height: 0"
+    >
+      <app-prompt-result [result]="generatedStory"></app-prompt-result>
+    </div>
+    <!-- Chat input pegado abajo -->
     <app-chat-input
       [isSidebarCollapsed]="isSidebarCollapsed"
       (generatePrompt)="generate($event)"

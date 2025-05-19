@@ -10,10 +10,12 @@ export class NavbarComponent {
   @Output() toggleMenu = new EventEmitter<void>();
   @Output() openSettings = new EventEmitter<void>();
 
-  isLoggedIn = false; constructor(private authService: AuthService) {}
+  isLoggedIn = false; 
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.authService.isLoggedIn().subscribe((status) => {
+      console.log('Navbar detecta login:', status);
       this.isLoggedIn = status;
     });
   }

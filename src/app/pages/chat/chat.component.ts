@@ -11,7 +11,7 @@ import { PromptService, GeneratePromptResponse, ComedianInfo } from '../../servi
 export class ChatComponent implements OnInit {
   title = 'Sorna-frontend';
   isSidebarCollapsed: boolean = true;
-
+  isLoading = false;
   comedians: ComedianInfo[] = [];
   selectedComedian: string = '';
   prompt: string = '';
@@ -43,13 +43,16 @@ export class ChatComponent implements OnInit {
 generate(event: { prompt: string, comedian: string }) {
   this.error = '';
   this.generatedStory = undefined;
+  this.isLoading = true;
   this.promptService.generatePrompt(event.prompt, event.comedian).subscribe({
     next: (res) => {
       console.log('Respuesta recibida:', res);
-      this.generatedStory = res; // <--- Aquí se asigna la respuesta
+      this.generatedStory = res;
+      this.isLoading = false; 
     },
     error: (err) => {
       this.error = 'Error generando historia';
+      this.isLoading = false;
     }
   });
 }

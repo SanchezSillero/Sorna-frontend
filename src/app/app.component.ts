@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,16 +10,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Sorna-frontend';
-  isSidebarCollapsed: boolean = true; // Estado inicial (colapsado)
+  isSidebarCollapsed: boolean = true; 
+
+  constructor(private authService: AuthService) {
+    this.authService.checkSession(); 
+  }
 
   onToggleMenu() {
-    this.isSidebarCollapsed = !this.isSidebarCollapsed; // Cambia el estado
+    this.isSidebarCollapsed = !this.isSidebarCollapsed; 
     console.log('Toggle del menú lateral');
-    // Aquí puedes mostrar u ocultar el sidebar
+    
   }
 
   onOpenSettings() {
     console.log('Abrir configuración de usuario');
-    // Aquí puedes mostrar un modal o un panel de ajustes
+   
   }
 }

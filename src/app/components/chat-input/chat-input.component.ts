@@ -30,7 +30,7 @@ export class ChatInputComponent implements OnInit {
 
   sendPrompt() {
     if (this.promptText.trim() && this.selectedComedian) {
-       console.log('Emitir prompt:', this.promptText, 'Comediante:', this.selectedComedian); // <-- Añade este log
+       console.log('Emitir prompt:', this.promptText, 'Comediante:', this.selectedComedian); 
       this.generatePrompt.emit({
         prompt: this.promptText,
         comedian: this.selectedComedian

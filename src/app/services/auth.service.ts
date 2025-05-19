@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  // Login con usuario y contraseña
+  // Login  
   login(username: string, password: string): Observable<HttpResponse<any>> {
     return this.http
       .post(`${this.apiUrl}/auth/login`, { username, password }, { observe: 'response', withCredentials: true })
@@ -24,7 +24,7 @@ export class AuthService {
       );
   }
 
-  // Registro con email, usuario y contraseña
+   // Registro
   register(email: string, username: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/auth/register`, {
       email,
@@ -33,9 +33,9 @@ export class AuthService {
     }, { withCredentials: true });
   }
 
-  // Verifica si la sesión es válida (llama a un endpoint protegido)
+  // Verifica si la sesión es valida 
   checkSession(): void {
-    this.http.get(`${this.apiUrl}/auth/me`, { withCredentials: true }).pipe(
+    this.http.get(`${this.apiUrl}/user_profile`, { withCredentials: true }).pipe(
       tap(() => this.isLoggedInSubject.next(true)),
       catchError(() => {
         this.isLoggedInSubject.next(false);
@@ -43,9 +43,12 @@ export class AuthService {
       })
     ).subscribe();
   }
+   isLoggedIn(): Observable<boolean> {
+    return this.isLoggedInSubject.asObservable();
+  }
 
   logout(): void {
-    // Llama al endpoint de logout si existe
+    
     this.http.post(`${this.apiUrl}/auth/logout`, {}, { withCredentials: true }).subscribe(() => {
       this.isLoggedInSubject.next(false);
     }, () => {
@@ -53,7 +56,5 @@ export class AuthService {
     });
   }
 
-  isLoggedIn(): Observable<boolean> {
-    return this.isLoggedInSubject.asObservable();
-  }
+ 
 }
