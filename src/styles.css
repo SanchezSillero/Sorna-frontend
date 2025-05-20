@@ -16,3 +16,10 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
+@font-face {
+  font-family: "SornaFont";
+  src: url("C:/Users/user/Documents/GitHub/Sorna-frontend/public/fonts/Montserrat-Black.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}

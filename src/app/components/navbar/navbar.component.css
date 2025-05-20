@@ -10,3 +10,6 @@
   user-select: none;
   cursor: default;
 }
+.navbar-titulo {
+  font-family: "SornaFont", Arial, sans-serif;
+}
