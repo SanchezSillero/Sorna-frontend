@@ -13,3 +13,8 @@
 .navbar-titulo {
   font-family: "SornaFont", Arial, sans-serif;
 }
+@media (max-width: 475px) {
+  .login-text {
+    display: none !important;
+  }
+}
