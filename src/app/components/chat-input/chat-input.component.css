@@ -68,3 +68,25 @@ button.btn:active {
   background-color: #23272b;
   color: #fff;
 }
+
+@media (max-width: 575px) {
+  .send-btn,
+  button.btn-primary {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    padding: 0 !important;
+    margin-right: 6px !important;
+    border-radius: 50% !important;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+textarea.form-control {
+  max-width: 100%;
+  font-size: 1rem;
+}
